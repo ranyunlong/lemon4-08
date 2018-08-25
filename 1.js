@@ -9,3 +9,9 @@ var c = 200
 // git commit -m "消息"
 
 // git push -u 绑定默认分支
+// git push  当绑定了默认分支后 直接就可以使用push
+
+// 例如
+
+// git push -u github master
+// git push  ===  git push -u github master
