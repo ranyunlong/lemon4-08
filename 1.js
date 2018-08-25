@@ -1,5 +1,6 @@
 var a = 100
 var a = 200
+var c = 200
 
 // 在master分支里面修改的代码
 
