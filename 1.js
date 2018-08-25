@@ -7,3 +7,5 @@ var c = 200
 // 当我们修改了文件之后 它就不让切换分支
 // git add .
 // git commit -m "消息"
+
+// git push -u 绑定默认分支
