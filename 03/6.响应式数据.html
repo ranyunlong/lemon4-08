@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- {{user.username}}
+        {{user.age}}
+        {{user.sex}}
+
+        <br/>
+        <br/>
+        男<input type="radio" @click="select" value="男" v-model="sex">
+        女<input type="radio" @click="select" value="女" v-model="sex">
+        <button @click="select">切换</button> -->
+
+        <ul>
+            <li v-for="user in users">{{user}}</li>
+        </ul>
+
+        <button @click="concat">合并</button>
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                sex:'男',
+                user: {
+                    username:'zhangsan',
+                    age: 20
+                },
+                users: [
+                    '张三',
+                    '李四'
+                ]
+            },
+            methods:{
+                select(){
+                    // 后添加的数据是不会被处理成响应式数据的
+                    // this.user.sex = this.sex
+
+                    // 后添加的对象成员或者数据 必须使用Vue.set 或者是 this.$set
+                    
+                    //console.log(Vue.set === this.$set)
+                    //console.log(this.user)
+
+                    this.$set(this.user,'sex','女')
+                },
+                concat(){
+                    // this.users = this.users.concat('老王')
+                    // console.log(this.users)
+                    this.users.slice(1,1)
+                }
+            }
+        })
+    </script>
+</body>
+</html>

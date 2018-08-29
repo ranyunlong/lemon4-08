@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue if</title>
+    <script src="js/vue.js"></script>
+    <style>
+        .active{
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        
+        <!-- 
+            : 冒号 === v-bind:
+            @ === v-on:
+
+            这两个缩写指令
+         -->
+
+        <div :class="{active:show}" @click="show=!show">
+            13213
+        </div>
+    </div>
+
+    <script>
+       const vm =new Vue({
+            el:'#app',
+            data: {
+                show: true
+            }
+        })
+    </script>
+
+</body>
+</html>
