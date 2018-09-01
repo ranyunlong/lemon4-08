@@ -55,7 +55,11 @@ Vue.component('Button',{
             'btn-xs': size === 'xs'
         }]">
         {{value}}
+            <Card />
             <slot></slot>
         </button>
-    `
+    `,
+    components: {
+        Card
+    }
 })
