@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .swicher {
+            width: 44px;
+            height: 22px;
+            background: #ccc;
+            border-radius: 22px;
+            display: inline-block;
+            cursor: pointer;
+            transition: background-color 0.2s linear;
+        }
+        .swicher .btn {
+            width: 20px;
+            height: 20px;
+            background: #fff;
+            margin: 1px;
+            border-radius: 50%;
+            transition: transform 0.2s ease-in;
+        }
+
+        .swicher.swicher-on{
+            background-color: #2d8cf0;
+        }
+        .swicher.swicher-on .btn {
+            transform: translateX(22px);
+        }
+    </style>
+    <script src="js/vue.js"></script>
+    <script src="components/Swicher.js"></script>
+</head>
+<body>
+    <div id="app"></div>
+    <script>
+    
+        new Vue({
+            el: '#app',
+            data: {
+                value: true
+            },
+            template: `
+                <div class="app">
+                    <Swicher v-model="value" />    
+                    <Swicher v-model="value" />    
+                    {{value}}
+                    <button @click="value=!value">切换开关</button>
+                </div>
+            `
+        })
+    </script>
+</body>
+</html>
