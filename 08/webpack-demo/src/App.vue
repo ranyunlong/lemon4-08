@@ -11,8 +11,8 @@
 </script>
 
 <style>
-    body {
-        background: red;
-        background: blue;
+    .app h1{
+        background: orange;
+        color: #fff;
     }
 </style>

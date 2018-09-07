@@ -2,6 +2,7 @@
 
 const path = require('path')
 const { VueLoaderPlugin } = require('vue-loader')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
     entry: { // 多文件编译是对象的格式 单文件编译是 字符串和数组
@@ -16,6 +17,10 @@ module.exports = {
     },
     module: { // 模块处理
         rules: [ // 模块处理规则
+            // {
+            //     test: /\.js/, 
+            //     loader: "babel-loader"
+            // },
             {
                 test: /\.css$/, //正则
                 loader: ['style-loader', 'css-loader']
@@ -36,11 +41,24 @@ module.exports = {
         extensions: ['.vue','.js'], // 自动匹配文件后缀规则
         alias: { // 用来给模块添加别名路径的
             'vue': 'vue/dist/vue.esm', //给vue取一个别名
-            '@': path.resolve('src','assets')
+            '@': path.resolve('src','assets'),
+            // 'babel-core': path.join(__dirname,'node_modules','@babel','core')
         }
     },
+    devServer: { //webpack-dev-server的配置
+        contentBase: path.resolve('dist'), // 生成后的文件所在的目录
+        compress: true, //gzip压缩
+        // host: '127.0.0.1',
+        port: 4000,     // 服务器端口号
+        index: 'index.html', // http服务默认加载的html文件名称
+        open: true // 在webpack-dev-server启动时默认打开浏览器
+    },
     plugins: [
-        new VueLoaderPlugin()
+        new VueLoaderPlugin(),
+        new HtmlWebpackPlugin({
+            // 使用HtmlWebpackPlugin 可以不用打包出文件，直接生成文件到内存中，网页加载的时候也是从内存读取
+            template: path.resolve('index.html') //html文件模板
+        })
     ],
     mode: 'development' // production
 }
