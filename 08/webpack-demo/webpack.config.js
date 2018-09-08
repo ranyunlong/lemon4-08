@@ -12,15 +12,22 @@ module.exports = {
     output: { // 打包好的文件怎么输出
         path:path.resolve('dist'),  //配置 输出的具体目录（必须是绝对路径）
         filename: '[name].js', // 定义你打包的文件叫啥
-        library: 'lemon', // 暴露全局变量 在浏览器里
-        libraryTarget: 'umd2' // umd 通用的模块
+        // library: 'lemon', // 暴露全局变量 在浏览器里
+        // libraryTarget: 'umd2' // umd 通用的模块
     },
     module: { // 模块处理
         rules: [ // 模块处理规则
-            // {
-            //     test: /\.js/, 
-            //     loader: "babel-loader"
-            // },
+            {
+                test: /\.js/, 
+                use: {
+                    loader: "babel-loader",
+                    options: {
+                        presets: [
+                            "@babel/preset-env"
+                        ]
+                    }
+                }
+            },
             {
                 test: /\.css$/, //正则
                 loader: ['style-loader', 'css-loader']
@@ -60,7 +67,7 @@ module.exports = {
             template: path.resolve('index.html') //html文件模板
         })
     ],
-    mode: 'development' // production
+    mode: 'production' // production development
 }
 
 // development 开发模式
