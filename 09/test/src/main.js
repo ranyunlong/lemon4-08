@@ -8,9 +8,23 @@ import App from './App'
 // Vue.use(ElementUI) 添加vue插件的
 // Vue.use(ElementUI)
 
-import plugin from './plugins/index.js'
+import Test from '@/components/Test'
 
-Vue.use(plugin, {a:100})
+// import plugin from '@/plugins/index.js'
+
+// import Test from './test';
+
+
+// Vue.use(plugin, {a:100})
+
+
+// 全局过滤器
+
+Vue.filter('Yen',function(value) {
+  return '$'+value
+})
+
+
 
 
 
@@ -52,13 +66,13 @@ Vue.config.productionTip = false
  * 混入的作用是为了避免编写 相同的选项（维护的问题）
  */
 
- Vue.mixin({
-   data() {
-     return {
-       num: 10010
-     }
-   }
- })
+//  Vue.mixin({
+//    data() {
+//      return {
+//        num: 10010
+//      }
+//    }
+//  })
 
 /**
  * 全局指令 
@@ -97,6 +111,45 @@ Vue.config.productionTip = false
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
-  components: { App },
-  template: '<App/>'
+  components: { Test },
+  watch: {
+
+  },
+  mounted() {
+    // console.log(this.$children)
+    this.$watch(this.data,function(newVal,oldVal){
+
+    } )
+  },  
+  data() {
+    return {
+      data:''
+    }
+  },
+  template: '<div class="app"><Test  :num="100" title="test" /></div>'
+  // render(h) {
+  //   h(Test)
+  //   // createElement 这个函数是用来渲染组件的
+  //   // createElement('组件或者html标签',options={})
+  //   // createElement('')
+  //   // return h(Test, {
+  //   //   props: { // 给组件添加props
+  //   //     num: 100,
+  //   //     title:'标题',
+  //   //   },
+  //   //   on: { // 给组件监听事件
+  //   //     click() {
+  //   //       // console.log(this)
+  //   //     }
+  //   //   },
+  //   //   style: {
+  //   //     background:'red'
+  //   //   },
+  //   //   class: 'test'
+  //   // }, 'Test')
+
+  //   // return h('button', {
+  //   //   style:'background:red'
+  //   // },'这是一个div')
+  // }
 })
