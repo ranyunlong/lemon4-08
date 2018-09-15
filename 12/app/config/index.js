@@ -14,6 +14,10 @@ module.exports = {
       "/api": {
         target: "http://test.ranyunlong.com:3000",
         pathRewrite: {"^/api" : "/"}
+      },
+      "/dev": {
+        target: "http://localhost:3000",
+        pathRewrite: {"^/dev" : "/"}
       }
     },
 

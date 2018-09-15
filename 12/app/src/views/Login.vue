@@ -39,8 +39,8 @@
                 iconSize: 18,
                 verifiyCodeSrc: '/api/verifiy.gif',
                 form: {
-                    account: '',
-                    password: '',
+                    account: 'ranyunlong',
+                    password: 'ryl520cy',
                     verifiy: ''
                 },
                 formError: {
@@ -59,6 +59,7 @@
                 axios.post('/api/login',this.form)
                     .then(res=>{
                         console.log(res)
+                        this.$store.commit('login', res.data)
                         this.$router.push('/')
                     })
                     .catch(err=>{
@@ -67,7 +68,6 @@
                         Object.keys(data).forEach(k=>{
                             this.formError[k] = data[k]
                         })
-
                     })
             }
         },
