@@ -16,7 +16,7 @@
 
 <script>
 import { mapState, mapGetters, mapMutations, mapActions } from 'vuex'
-
+import axios from 'axios'
 // mapState 和 mapGetters 他们俩都是属性 都混入到computed选项里
 // mapMutations 和 mapActions 他们俩都是方法 都混入到 methods 选项里面去
 export default {
@@ -29,6 +29,13 @@ export default {
   },
   computed: {
     ...mapGetters(['user','c'])
+  },
+  mounted() {
+    axios.get('/dev/test?'+ Math.random()) .then(res=>{
+      console.log('then',res)
+    }).catch(err=>{
+      console.log('catch',err.response)
+    })
   }
 }
 </script>

@@ -46,7 +46,7 @@
 </template>
 
 <script>
-    import axios from 'axios'
+    import { register, verifiy } from '../api'
     export default {
         data() {
             return {
@@ -65,17 +65,17 @@
                     password: '',
                     verifiy: ''
                 },
-                verifiyCodeSrc: '/api/verifiy.gif'
+                verifiyCodeSrc: verifiy
             }
         },
         methods: {
             getVerifiy(e) {
-                const verifiySrc = '/api/verifiy.gif?' 
+                const verifiySrc = verifiy + '?' 
                 this.verifiyCodeSrc = verifiySrc + e.timeStamp
             },
             // 注册
             register(e) {
-                axios.post('/api/register',this.form).then(res=>{
+                register(this.form).then(res=>{
                     this.$router.push('/login')
                 }).catch(err=>{
                     this.getVerifiy(e)

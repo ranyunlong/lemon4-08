@@ -8,7 +8,7 @@ import router from './router'
 import store from './store'
 
 import iview from 'iview'
-import 'iview/dist/styles/iview.css'
+// import 'iview/dist/styles/iview.css'
 
 Vue.use(iview)
 

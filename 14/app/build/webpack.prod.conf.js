@@ -1,9 +1,4 @@
 'use strict'
-
-// webpack-bundle-analyzer
-// 用来分析打包的代码资源文件的分布情况
-
-
 const path = require('path')
 const utils = require('./utils')
 const webpack = require('webpack')
@@ -15,7 +10,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 
 const env = require('../config/prod.env')
 
@@ -33,17 +27,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     filename: utils.assetsPath('js/[name].[chunkhash].js'),
     chunkFilename: utils.assetsPath('js/[id].[chunkhash].js')
   },
-  // 用于忽略某个模块打包的选项某个模块打包的选项
-  externals: {
-    'iview' : 'iview', // iview 这个模块就不会被打包了
-    'vue': 'Vue',
-    'vue-router': 'VueRouter',
-    'vuex': 'Vuex',
-    // 'axios': 'Axios'
-  },
   plugins: [
-    // https://www.npmjs.com/package/webpack-bundle-analyzer
-    new BundleAnalyzerPlugin(),
     // http://vuejs.github.io/vue-loader/en/workflow/production.html
     new webpack.DefinePlugin({
       'process.env': env

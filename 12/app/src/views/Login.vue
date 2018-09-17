@@ -32,12 +32,12 @@
 </template>
 
 <script>
-    import axios from 'axios'
+    import { login, verifiy } from '../api';
     export default {
         data() {
             return {
                 iconSize: 18,
-                verifiyCodeSrc: '/api/verifiy.gif',
+                verifiyCodeSrc: verifiy,
                 form: {
                     account: 'ranyunlong',
                     password: 'ryl520cy',
@@ -52,11 +52,11 @@
         },
         methods: {
             getVerifiy(e) {
-                const verifiySrc = '/api/verifiy.gif?' 
+                const verifiySrc = verifiy + '?' 
                 this.verifiyCodeSrc = verifiySrc + e.timeStamp
             },
             login(e) {
-                axios.post('/api/login',this.form)
+                login(this.form)
                     .then(res=>{
                         console.log(res)
                         this.$store.commit('login', res.data)
