@@ -5,10 +5,15 @@ import App from './App'
 import router from './router'
 
 import Museui from 'muse-ui'
+import common from './common'
+
 
 // import 'muse-ui/dist/muse-ui.css'
 
 Vue.use(Museui)
+Vue.use(common)
+
+
 
 Vue.config.productionTip = false
 
