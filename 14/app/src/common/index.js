@@ -1,11 +1,13 @@
 import AppBar from './AppBar'
 import TabBar from './TabBar'
 import BackButton from './BackButton'
+import Tree from './Tree'
 
 const components = {
     AppBar,
     TabBar,
-    BackButton
+    BackButton,
+    // Tree
 }
 
 export default {

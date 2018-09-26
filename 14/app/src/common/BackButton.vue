@@ -1,6 +1,6 @@
 <template>
-    <mu-button small flat @click="$router.back()" color="primary">
-      back
+    <mu-button icon color="#fff" @click="$router.back()" slot="right">
+        <mu-icon value="keyboard_arrow_left"></mu-icon>
     </mu-button>
 </template>
 
